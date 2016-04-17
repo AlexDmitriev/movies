@@ -1,0 +1,6 @@
+bin/
+include/
+lib/
+pysqlite2-doc/
+.Python
+pip-selfcheck.json
