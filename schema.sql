@@ -1,11 +1,11 @@
-drop table if exists genres;
-create table genres (
+drop table if exists genre;
+create table genre (
   id integer primary key autoincrement,
   name text not null
 );
 
-drop table if exists movies;
-create table movies (
+drop table if exists movie;
+create table movie (
   id integer primary key autoincrement,
   imdbID text not null unique,
   title text not null,
@@ -14,24 +14,24 @@ create table movies (
   director text
 );
 
-drop table if exists actors;
-create table actors (
+drop table if exists actor;
+create table actor (
   id integer primary key autoincrement,
   name text not null
 );
 
-drop table if exists movies_genres;
-CREATE TABLE movies_genres (
+drop table if exists movie_genre_through;
+CREATE TABLE movie_genre_through (
     movie_id integer,
     genre_id integer,
-    foreign key(movie_id) references movies(id) on delete cascade,
-    foreign key(genre_id) references genres(id) on delete cascade
+    foreign key(movie_id) references movie(id) on delete cascade,
+    foreign key(genre_id) references genre(id) on delete cascade
 );
 
-drop table if exists movies_actors;
-CREATE TABLE movies_actors (
+drop table if exists movie_actor_through;
+CREATE TABLE movie_actor_through (
     movie_id integer,
-    actors_id integer,
-    foreign key(movie_id) references movies(id) on delete cascade,
-    foreign key(actors_id) references actors(id) on delete cascade
+    actor_id integer,
+    foreign key(movie_id) references movie(id) on delete cascade,
+    foreign key(actor_id) references actor(id) on delete cascade
 );
